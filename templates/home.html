@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<div class="hero" style="background: url('{{ url_for('static', filename='images/hero_shoe.jpg') }}') center/cover no-repeat; height: 90vh;">
+    <div class="text-white d-flex align-items-start justify-content-start h-100 flex-column text-start ps-5 pt-5" style="backdrop-filter: brightness(50%);">
+        <div class="mt-5 pt-4">
+            <h1 class="display-3 fw-bold">Crafted for Every Step</h1>
+            <p class="lead">Elegant. Durable. Designed for those who walk with purpose.</p>
+            <a href="{{ url_for('products') }}" class="btn btn-light btn-lg mt-3 px-4 py-2">Explore Collection</a>
+        </div>
+    </div>
+</div>
+
+
+{% if testimonials %}
+<div class="container py-5">
+    <h2 class="text-center mb-4 fw-bold" style="color: #1b5e20;">💬 What Our Customers Say</h2>
+
+    <div class="row g-4">
+        {% for t in testimonials %}
+        <div class="col-md-6 col-lg-3">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="card-title text-primary">{{ t.name }}</h5>
+                    <p class="text-warning mb-1">
+                        {% for _ in range(t.rating) %}
+                            ⭐
+                        {% endfor %}
+                    </p>
+                    <p class="card-text fst-italic text-dark" style="font-size: 0.95rem;">“{{ t.text }}”</p>
+                </div>
+                <div class="card-footer bg-transparent border-top-0">
+                    <small class="text-muted">🥿 {{ t.product }}</small>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}

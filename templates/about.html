@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<div style="background: url('{{ url_for('static', filename='images/about_bg.jpg') }}') no-repeat center center fixed; background-size: cover; min-height: 100vh;">
+    <div class="container py-5 mt-5 pt-5 text-white bg-dark bg-opacity-75 rounded">
+        <h2 class="text-center mb-4">About Comfort In Sole</h2>
+        <p class="lead text-center">
+            Founded in 2025, our mission is to make every step lighter, smoother, and stylish.
+            Comfort In Sole is not just footwear — it’s a lifestyle choice.
+        </p>
+    </div>
+</div>
+
+<div class="bg-dark text-white pt-5 pb-4 mt-5">
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="col-md-3 mb-4">
+                <h5 class="text-warning">Corporate Info</h5>
+                <ul class="list-unstyled">
+                    <li>About Skechers</li>
+                    <li>Corporate Info</li>
+                    <li>Corporate Governance</li>
+                </ul>
+            </div>
+
+           
+            <div class="col-md-3 mb-4">
+                <h5 class="text-warning">Customer Service</h5>
+                <ul class="list-unstyled">
+                    <li>Return Policy</li>
+                    <li>Product Information</li>
+                    <li>Contact Us</li>
+                    <li>Sitemap</li>
+                </ul>
+            </div>
+
+            
+            <div class="col-md-3 mb-4">
+                <h5 class="text-warning">My Account</h5>
+                <ul class="list-unstyled">
+                    <li>Order Status</li>
+                    <li>Saved Products</li>
+                    <li>My Returns</li>
+                </ul>
+            </div>
+
+            
+            <div class="col-md-3 mb-4">
+                <h5 class="text-warning">Others</h5>
+                <ul class="list-unstyled">
+                    <li>FAQ</li>
+                    <li>Terms & Conditions</li>
+                    <li>Privacy Policy</li>
+                    <li>Find A Store</li>
+                </ul>
+            </div>
+        </div>
+
+       
+<div class="row text-center mt-4">
+    <div class="col">
+        <h5 class="text-white mb-4">Follow Us</h5>
+        <div class="d-flex justify-content-center gap-5 flex-wrap">
+            <div class="text-center">
+                <img src="{{ url_for('static', filename='images/icons/instagram.png') }}" alt="Instagram" width="40">
+                <p class="mt-2 text-white">Instagram</p>
+            </div>
+            <div class="text-center">
+                <img src="{{ url_for('static', filename='images/icons/twitter.png') }}" alt="Twitter" width="40">
+                <p class="mt-2 text-white">Twitter</p>
+            </div>
+            <div class="text-center">
+                <img src="{{ url_for('static', filename='images/icons/facebook.png') }}" alt="Facebook" width="40">
+                <p class="mt-2 text-white">Facebook</p>
+            </div>
+            <div class="text-center">
+                <img src="{{ url_for('static', filename='images/icons/youtube.png') }}" alt="YouTube" width="40">
+                <p class="mt-2 text-white">YouTube</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row text-center mt-4">
+    <div class="col d-flex justify-content-center gap-4">
+        <a href="#" class="text-white fs-3" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="text-white fs-3" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="text-white fs-3" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="text-white fs-3" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    </div>
+</div>
+
+{% endblock %}

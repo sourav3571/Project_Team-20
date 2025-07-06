@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div style="background: url('{{ url_for('static', filename='images/products_bg.jpg') }}') no-repeat center center fixed; background-size: cover; min-height: 100vh; padding-top: 60px; padding-bottom: 60px;">
+    <div class="container py-5 rounded shadow" style="background-color: rgba(255, 255, 255, 0.12); backdrop-filter: blur(10px);">
+        <h2 class="text-center mb-4 fw-bold" style="color: #ffd700; text-shadow: 1px 1px 3px #000;">🔥 SALE!! SALE!! SALE!! 🔥</h2>
+
+
+        <!-- Tabs -->
+        <ul class="nav nav-pills justify-content-center mb-4" id="productTabs" role="tablist">
+            <li class="nav-item">
+                <button class="nav-link active bg-primary text-white" id="men-tab" data-bs-toggle="tab" data-bs-target="#men" type="button">👞 Men</button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link bg-danger text-white ms-2" id="women-tab" data-bs-toggle="tab" data-bs-target="#women" type="button">👠 Women</button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link bg-warning text-dark ms-2" id="genz-tab" data-bs-toggle="tab" data-bs-target="#genz" type="button">🔥 Gen Z</button>
+            </li>
+        </ul>
+
+         
+        <div class="tab-content" id="productTabsContent">
+
+            
+            <div class="tab-pane fade show active" id="men">
+                <div class="row g-4">
+                    {% for product_id, product in men_products.items() %}
+                        {% set price = product.price %}
+                        {% set discount = (price * 0.10)|round(0, 'floor') %}
+                        {% set discounted_price = price - discount %}
+                        <div class="col-md-4">
+                            <div class="card h-100 bg-light bg-opacity-75 border-0 shadow-lg">
+                                <img src="{{ url_for('static', filename=product.image) }}" class="card-img-top" alt="{{ product.name }}">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title text-primary">{{ product.name }}</h5>
+                                    <p class="card-text">Built for durability & comfort.</p>
+                                    <p class="mb-1">
+                                        <span class="text-muted text-decoration-line-through">₹{{ product.price }}</span>
+                                        <span class="fw-bold text-success ms-2">₹{{ discounted_price }}</span>
+                                    </p>
+                                    <p class="small text-muted">Use code <code>team20</code> for 10% OFF</p>
+                                    <a href="{{ url_for('buy', product_id=product_id) }}" class="btn btn-outline-primary">Buy Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+
+            
+            <div class="tab-pane fade" id="women">
+                <div class="row g-4 mt-3">
+                    {% for product_id, product in women_products.items() %}
+                        {% set price = product.price %}
+                        {% set discount = (price * 0.10)|round(0, 'floor') %}
+                        {% set discounted_price = price - discount %}
+                        <div class="col-md-4">
+                            <div class="card h-100 bg-light bg-opacity-75 border-0 shadow-lg">
+                                <img src="{{ url_for('static', filename=product.image) }}" class="card-img-top" alt="{{ product.name }}">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title text-primary">{{ product.name }}</h5>
+                                    <p class="card-text">High-quality and trendy footwear.</p>
+                                    <p class="mb-1">
+                                        <span class="text-muted text-decoration-line-through">₹{{ product.price }}</span>
+                                        <span class="fw-bold text-success ms-2">₹{{ discounted_price }}</span>
+                                    </p>
+                                    <p class="small text-muted">Use code <code>team20</code> for 10% OFF</p>
+                                    <a href="{{ url_for('buy', product_id=product_id) }}" class="btn btn-outline-primary">Buy Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+
+            
+            <div class="tab-pane fade" id="genz">
+                <div class="row g-4 mt-3">
+                    {% for product_id, product in genz_products.items() %}
+                        {% set price = product.price %}
+                        {% set discount = (price * 0.10)|round(0, 'floor') %}
+                        {% set discounted_price = price - discount %}
+                        <div class="col-md-4">
+                            <div class="card h-100 bg-light bg-opacity-75 border-0 shadow-lg">
+                                <img src="{{ url_for('static', filename=product.image) }}" class="card-img-top" alt="{{ product.name }}">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title fw-bold" style="color: #ffcc00; text-shadow: 0 1px 2px rgba(0,0,0,0.6);">{{ product.name }}</h5>
+                                    <p class="card-text">Loud. Stylish. You.</p>
+                                    <p class="mb-1">
+                                        <span class="text-muted text-decoration-line-through">₹{{ product.price }}</span>
+                                        <span class="fw-bold text-success ms-2">₹{{ discounted_price }}</span>
+                                    </p>
+                                    <p class="small text-muted">Use code <code>team20</code> for 10% OFF</p>
+                                    <a href="{{ url_for('buy', product_id=product_id) }}" class="btn btn-warning text-dark">Buy Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+   
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

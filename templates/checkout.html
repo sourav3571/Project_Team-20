@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-5" style="max-height: 90vh; overflow-y: auto;">
+    <div class="card shadow p-4">
+        <h2 class="mb-3 text-success">🛒 Checkout</h2>
+        <p class="lead">You're about to buy <strong>Product #{{ product_id }}</strong></p>
+
+        {% if discounted %}
+            <p>
+                <strong>Original Price:</strong> 
+                <span class="text-muted text-decoration-line-through">₹{{ original }}</span><br>
+                <strong class="text-success">Discounted Price:</strong> 
+                <span class="fw-bold text-success">₹{{ discounted }}</span>
+                <span class="badge bg-success ms-2">10% OFF</span>
+            </p>
+        {% else %}
+            <p><strong>Price:</strong> ₹{{ original }}</p>
+        {% endif %}
+
+        {% if invalid %}
+            <p class="text-danger">❌ Invalid coupon code. Please try again.</p>
+        {% endif %}
+
+        
+        <form method="POST">
+            <div class="mb-3">
+                <label for="coupon" class="form-label">Coupon Code</label>
+                <input type="text" name="coupon" id="coupon" class="form-control" placeholder="Enter TEAM20 to get 10% off" value="{{ request.form.coupon }}">
+            </div>
+            <button type="submit" class="btn btn-outline-success mb-3">Apply Coupon</button>
+        </form>
+
+        <hr>
+
+        <p><strong>Shipping Address:</strong></p>
+        <textarea class="form-control mb-3" rows="4" placeholder="Enter your address here..."></textarea>
+
+        <p><strong>Payment Method:</strong></p>
+        <select class="form-select mb-3">
+            <option>Credit Card</option>
+            <option>UPI</option>
+            <option>Cash on Delivery</option>
+        </select>
+
+        <a href="#" class="btn btn-primary">Proceed to Pay</a>
+    </div>
+</div>
+{% endblock %}
