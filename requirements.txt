@@ -1,0 +1,5 @@
+Flask
+Flask-WTF
+email_validator
+Flask-Bcrypt
+Flask-Login
